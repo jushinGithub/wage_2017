@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="salary"  extends="json-default">
+	    
+        <!--   
+	    <interceptors>  
+            <interceptor name="loginValidate" class="com.zhugx.salary.action.LoginValidate" />  
+            <interceptor-stack name="mystack">  
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="loginValidate"/>  
+            </interceptor-stack>  
+        </interceptors>
+        <default-interceptor-ref name="mystack"/> 
+        
+		<global-results>  
+           <result name="login">/index.jsp</result>  
+       </global-results> 
+       -->
+       
+		<!--  登陆  --> 
+		<action name="loginAction" class="loginAction" method="login">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action> 
+	
+		<!-- 部门 -->
+		<action name="getOrgTreeNodes" class="organizeAction"  method="getOrgTreeNodes">
+			<result type="json">  
+                <param name="root">treeNodes</param>  
+            </result> 
+		</action>  
+		<action name="getShop" class="organizeAction"  method="getShop">
+			<result type="json">  
+                <param name="root">treeNodes</param>  
+            </result> 
+		</action>
+		<action name="addTimeOrg" class="organizeAction"  method="addTimeOrg">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>
+
+		<!-- 员工 -->		
+		<action name="getEmployeeByOrgId" class="employeeAction" method="getEmployeeByOrgId">
+			<result type="json">  
+                <param name="root">dataGrid</param>  
+            </result> 
+		</action>  
+		<action name="getAttendace" class="employeeAction" method="getAttendace">
+			<result type="json">  
+                <param name="root">dataGrid</param>  
+            </result> 
+		</action> 
+		<action name="saveOrUpdateEmployee" class="employeeAction" method="saveOrUpdateEmployee">
+	    	<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+	    </action>
+		<action name="removeEmployee"       class="employeeAction" method="removeEmployee">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action> 
+		<action name="removeHistoryEmployee"  class="employeeAction" method="removeHistoryEmployee">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action> 
+		
+		
+		<!-- 工资项 -->
+		<action name="getWageAction" class="wageAction" method="getWage">
+			<result type="json">  
+                <param name="root">dataGrid</param>  
+            </result> 
+		</action>
+		<action name="saveWageAction" class="wageAction" method="saveWage">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>
+		
+		<!-- 系统配置 -->
+		<action name="getMyConfig" class="configurationAction" method="getMyConfig">
+			<result type="json">  
+                <param name="root">jsonConfig</param>  
+            </result> 
+		</action>
+		<action name="saveMyConfig" class="configurationAction" method="saveMyConfig">
+			<result type="json">  
+                <param name="root">configuration</param>  
+            </result> 
+		</action>
+	
+		
+		<!--  生产数据 --> 
+		<action name="getProductData" class="productAction" method="getProductData">
+			<result type="json">  
+                <param name="root">productDataGrid</param>  
+            </result> 
+		</action> 
+		<action name="getProductDataCg" class="productAction" method="getProductDataCg">
+			<result type="json">  
+                <param name="root">productDataGrid</param>  
+            </result> 
+		</action> 
+		<action name="getAllItem" class="productAction" method="getAllItem">
+			<result type="json">  
+                <param name="root">dataGrid</param>  
+            </result> 
+		</action>   
+		<action name="getProductQtData" class="productAction" method="getProductQtData">
+			<result type="json">  
+                <param name="root">dataGrid</param>  
+            </result> 
+		</action>
+		<action name="saveOrUpdateProductData" class="productAction" method="saveOrUpdateProductData">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>  
+		<action name="saveOrUpdateProductDataCallback" class="productAction" method="saveOrUpdateProductDataCallback">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>    
+		<action name="saveOrUpdateProductDataQt" class="productAction" method="saveOrUpdateProductDataQt">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action> 
+		<action name="saveOrUpdateProductDataQtCallback" class="productAction" method="saveOrUpdateProductDataQtCallback">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action> 
+		<action name="deleteProductData" class="productAction" method="deleteProductData">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action> 
+		<action name="reloadProductData" class="productAction" method="reloadProductData">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>  
+		<action name="reloadProductDataCallback" class="productAction" method="reloadProductDataCallback">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>   
+		<action name="cleanData" class="productAction" method="cleanData">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>
+		<action name="queryGroupName" class="productAction" method="queryGroupName">
+			<result type="json" >  
+	    	   <param name="root">groupName</param>  
+            </result>
+		</action>
+		<action name="queryGroupNo" class="productAction" method="queryGroupNo">
+			<result type="json" >  
+	    	   <param name="root">groupName</param>  
+            </result>
+		</action>
+		
+		<!--  工价  -->
+		<action name="getProductPrice" class="productAction" method="getProductPrice">
+			<result type="json">  
+                <param name="root">dataGrid</param>  
+            </result> 
+		</action> 
+		<action name="saveOrUpdateProductPrice" class="productAction" method="saveOrUpdateProductPrice">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>  
+		<action name="saveOrUpdateProductPriceCallback" class="productAction" method="saveOrUpdateProductPriceCallback">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>    
+		
+		<action name="userLastMonthPrice" class="productAction" method="userLastMonthPrice">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action> 
+		
+		<!--  工时  -->
+		<action name="reLoadTime" class="productAction" method="reLoadTime">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>   
+		<action name="delTime" class="productAction" method="delTime">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>
+		<action name="getProductTime" class="productAction" method="getProductTime">
+			<result type="json">  
+                <param name="root">dataGrid</param>  
+            </result> 
+		</action> 
+		<action name="saveOrUpdateProductTime" class="productAction" method="saveOrUpdateProductTime">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action> 
+		<action name="saveOrUpdateProductTimeCallback" class="productAction" method="saveOrUpdateProductTimeCallback">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action> 
+		
+		<!-- 月度工资  -->
+		<action name="getSalary" class="monthSalaryAction" method="getSalary">
+			<result type="json">  
+                <param name="root">dataGrid</param>  
+            </result> 
+		</action>  
+		<action name="getOrgSumSalary" class="monthSalaryAction" method="getOrgSumSalary">
+			<result type="json">  
+                <param name="root">dataGrid</param>  
+            </result> 
+		</action>
+		<action name="saveOrUpdateSalary" class="monthSalaryAction" method="saveOrUpdateSalary">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>   
+		<action name="initWage" class="monthSalaryAction" method="initWage">
+			<result type="json" >  
+	    	   <param name="root">dataGrid</param>  
+            </result>
+		</action>     
+		<action name="calculateSalary" class="monthSalaryAction" method="calculateSalary">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action> 
+		<action name="getOrgSalary" class="monthSalaryAction" method="getOrgSalary">
+			<result type="json">  
+                <param name="root">dataGrid</param>  
+            </result> 
+		</action> 
+		<action name="saveOrUpdateOrgSalary" class="monthSalaryAction" method="saveOrUpdateOrgSalary">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>     
+		<action name="calTimeSalary" class="monthSalaryAction" method="calTimeSalary">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action> 
+		<action name="saveOrUpdateOrgSalaryCallback" class="monthSalaryAction" method="saveOrUpdateOrgSalaryCallback">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action>
+		
+		<!--  report  -->
+		<action name="getReportFive" class="reportAction" method="getReportFive">
+			<result type="json">  
+                <param name="root">dataGrid</param>  
+            </result> 
+		</action>  
+		<action name="getMonthAnalyze" class="reportAction" method="getMonthAnalyze">
+			<result type="json">  
+                <param name="root">dataGrid</param>  
+            </result> 
+		</action>    
+		
+		<!-- excel 到处 -->
+		<action name="saveListData" class="excelExportAction" method="saveListData">
+			<result type="json" >  
+	    	   <param name="root">message</param>  
+            </result>
+		</action> 
+		
+		<action name="exportExcel" class="excelExportAction" method="exportExcel">
+			<result name="success" type="stream">
+                <!-- 下载文件的类型，如果你不知道是什么格式，可以去 tomcat\conf\web.xml下找 -->
+                <param name="contentType">application/vnd.ms-excel</param>
+                <!-- 返回流 excelStream为action中的流变量名称 -->
+                <param name="inputName">excelStream</param>
+                <!-- attachment 这个位置的参数挺特殊的，可以设置成下载时，是否出现个下载提示框，或者直接下载之类的。
+                fileName指定生成的文件名字(适合动态生成文件名，比如做报表时，一般都要说是几月的统计数据之类)为action中变量-->
+                <param name="contentDisposition">
+                    attachment;filename=${excelFileName}
+                </param>
+                <param name="bufferSize">1024</param>
+            </result>
+		</action> 
+	</package>
+	
+</struts>

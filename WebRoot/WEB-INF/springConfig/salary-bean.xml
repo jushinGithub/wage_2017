@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:cache="http://www.springframework.org/schema/cache" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.1.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+       http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd">
+       
+       
+	<context:annotation-config />
+	
+	<!--  dao  -->
+	<bean name="employeeDAO" class="com.zhugx.salary.dao.impl.EmployeeDAOImpl" >   
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean name="organizeDAO" class="com.zhugx.salary.dao.impl.OrganizeDAOImpl" >   
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean name="wageDAO" class="com.zhugx.salary.dao.impl.WageDAOImpl" >   
+		<property name="jdbcTemplate"   ref="jdbcTemplate" />
+	</bean>
+	<bean name="configurationDAO" class="com.zhugx.salary.dao.impl.ConfigurationDAOImpl" >   
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean name="productDataDAO" class="com.zhugx.salary.dao.impl.ProductDataDAOImpl" >   
+		<property name="jdbcTemplate" ref="jdbcTemplate" /> 
+		<property name="organizeDAO"  ref="organizeDAO" />
+	</bean>
+	<bean name="productPriceDAO" class="com.zhugx.salary.dao.impl.ProductPriceDAOImpl" >   
+		<property name="jdbcTemplate"   ref="jdbcTemplate" />  
+		<property name="monthSalaryDAO" ref="monthSalaryDAO" /> 
+	</bean>
+	<bean name="productTimeDAO" class="com.zhugx.salary.dao.impl.ProductTimeDAOImpl" >   
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean name="monthSalaryDAO" class="com.zhugx.salary.dao.impl.MonthSalaryDAOImpl" >   
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+		
+	<!-- service -->
+	<bean name="employeeService"       class="com.zhugx.salary.service.impl.EmployeeServiceImpl" scope="singleton" /> 
+	<bean name="organizeService"       class="com.zhugx.salary.service.impl.OrganizeServiceImpl" scope="singleton" /> 
+	<bean name="wageService"           class="com.zhugx.salary.service.impl.WageServiceImpl" scope="singleton" /> 
+	<bean name="configurationService"  class="com.zhugx.salary.service.impl.ConfigurationServiceImpl" scope="singleton" /> 
+	<bean name="productService"        class="com.zhugx.salary.service.impl.ProductServiceImpl" scope="singleton" />  
+	<bean name="monthSalaryService"    class="com.zhugx.salary.service.impl.MonthSalaryServiceImpl" scope="singleton" /> 
+	<bean name="reportService"         class="com.zhugx.salary.service.impl.ReportServiceImpl" scope="singleton" /> 
+	
+	<!-- action  -->  
+	<bean name="loginAction"         class="com.zhugx.salary.action.LoginAction"     scope="prototype" />
+	<bean name="employeeAction"      class="com.zhugx.salary.action.EmployeeAction"  scope="prototype" />
+	<bean name="organizeAction"      class="com.zhugx.salary.action.OrganizeAction"  scope="prototype" />
+	<bean name="wageAction"          class="com.zhugx.salary.action.WageAction"      scope="prototype" />
+	<bean name="configurationAction" class="com.zhugx.salary.action.ConfigurationAction"  scope="prototype" />
+	<bean name="productAction"       class="com.zhugx.salary.action.ProductAction"   scope="prototype" />
+	<bean name="monthSalaryAction"   class="com.zhugx.salary.action.MonthSalaryAction"  scope="prototype" />
+	<bean name="reportAction"        class="com.zhugx.salary.action.ReportAction"  scope="prototype" />
+	<bean name="excelExportAction"   class="com.zhugx.salary.action.ExcelExportAction"  scope="prototype" />
+	
+</beans>
